@@ -1,0 +1,150 @@
+:root{
+  --bg:#ffffff; /* fond général */
+  --card:#f9f9f9;
+  --muted:#555555;
+  --accent:#1a73e8;
+  --accent-2:#185abc;
+  --glass: rgba(0,0,0,0.03);
+  --neon:#1a73e8;
+  --neon-2:#333333;
+  --text:#222222;
+  --max-width:1100px;
+}
+
+/* Reset basique */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;padding:0;font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color:var(--text);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--accent);text-decoration:none}
+.container{width:calc(100% - 40px);max-width:var(--max-width);margin:0 auto}
+
+/* Preloader simple */
+#preloader{position:fixed;left:0;top:0;right:0;bottom:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center}
+#preloader #status{width:48px;height:48px;border-radius:50%;border:4px solid rgba(0,0,0,0.05);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Header / sidebar */
+#header{position:fixed;left:20px;top:20px;width:260px;background:var(--bg-alt, #fdfdfd);border-radius:18px;padding:20px;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+#header .profile{display:flex;flex-direction:column;align-items:center;text-align:center}
+#header .profile img.img-fluid.rounded-circle{width:110px;height:110px;object-fit:cover;border-radius:999px;border:3px solid #e0e0e0;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+#header .profile h1{font-size:18px;margin:14px 0 6px;color:var(--text)}
+#header .profile .neon{color:var(--accent);text-shadow:none}
+#header .social-links{display:flex;gap:10px}
+#header .social-links a{width:34px;height:34px;border-radius:8px;background:#f0f0f0;display:inline-flex;align-items:center;justify-content:center;color:var(--text);font-size:16px}
+
+/* Nav menu */
+.nav-menu{margin-top:18px}
+.nav-menu ul{list-style:none;padding:0;margin:0}
+.nav-menu li{margin:8px 0}
+.nav-menu a{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;color:var(--text);background:transparent}
+.nav-menu li.active a, .nav-menu a:hover{background:var(--accent);color:#fff;}
+
+/* Hero */
+#hero{margin-left:320px;min-height:120vh;display:flex;align-items:center;padding:80px 40px;background:var(--bg)}
+.conteneur-hero{max-width:900px}
+#hero h1{font-size:48px;letter-spacing:1px;margin:0 0 12px;color:var(--text)}
+#hero h3{font-size:20px;margin:0;color:var(--muted)}
+.span.loader{display:inline-block}
+.span.loader .m{display:inline-block;animation:float 1.2s ease-in-out infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+/* Sections */
+main{margin-left:320px;padding:40px}
+.titre-section{margin-bottom:26px}
+.titre-section h2{font-size:28px;margin:0 0 6px;color:var(--accent)}
+.titre-section p{color:var(--muted);max-width:900px}
+
+/* A propos / section-presentation */
+.section-presentation .carte-presentation{background:var(--card);padding:18px;border-radius:12px;border:1px solid #e0e0e0}
+.conteneur-image{width:100%;display:flex;justify-content:center}
+.photo-profil{width:220px;height:220px;border-radius:12px;object-fit:cover;border:2px solid #e0e0e0}
+.content h3{margin-top:0;color:var(--text)}
+.texte-italique{font-style:italic;color:var(--muted)}
+.bouton-cv a{display:inline-block}
+.bouton-cv p{position:relative;display:inline-block;padding:10px 18px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700}
+
+/* Accordion secret */
+.accordion__checkbox{display:none}
+.accordion__heading{cursor:pointer;padding:12px;background:transparent;border-radius:8px}
+.accordion__content{max-height:0;overflow:hidden;transition:all .35s ease;padding:0 10px}
+.accordion__checkbox:checked ~ .accordion__content{max-height:800px;padding:20px}
+
+/* Skills, badges */
+.section-competences .img-fluid{display:inline-block}
+.skills-part .skills-parent{display:flex;flex-wrap:wrap;gap:14px}
+.carte-competence{background:var(--card);padding:12px;border-radius:12px;width:120px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.icone-competence img{width:48px;height:48px;object-fit:contain;margin:6px auto}
+.skills-name p{margin:6px 0 0;color:var(--muted);text-transform:capitalize}
+
+/* Resume / timeline */
+.carte-parcours{display:flex;gap:18px;align-items:flex-start;margin-bottom:18px;background:var(--card);padding:14px;border-radius:12px;border:1px solid #e0e0e0}
+.contenu-parcours{min-width:140px}
+.entete-parcours h4{margin:0 0 6px;color:var(--text)}
+.texte-parcours p{margin:6px 0;color:var(--muted)}
+.icone-parcours i{font-size:18px;color:var(--accent)}
+
+/* Portfolio grid */
+.section-projet .conteneur-projets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.carte-projet{background:var(--card);padding:12px;border-radius:12px;overflow:hidden;border:1px solid #e0e0e0}
+.image-projet{position:relative;border-radius:10px;overflow:hidden}
+.image-projet img{display:block;width:100%;height:180px;object-fit:cover}
+.liens-projet{position:absolute;right:10px;bottom:10px;display:flex;gap:8px}
+.liens-projet a{width:42px;height:42px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);color:var(--text)}
+.date{font-size:13px;color:var(--muted);padding:6px 10px;border-radius:6px;display:inline-block}
+
+/* Services / icon boxes */
+.carte-service{background:var(--card);padding:18px;border-radius:12px;margin-bottom:14px;border:1px solid #e0e0e0}
+.carte-service .icon{font-size:28px;margin-bottom:10px;color:var(--accent)}
+.carte-service .title a{color:var(--text);font-weight:700}
+.carte-service .description{color:var(--muted);font-size:14px}
+
+/* Contact / form */
+.section-contact .infos-contact{background:var(--card);padding:20px;border-radius:12px;border:1px solid #e0e0e0}
+.champ-formulaire{width:100%;padding:10px;border-radius:8px;background:#fff;border:1px solid #ccc;color:var(--text)}
+.champ-formulaire:focus{outline:none;box-shadow:0 0 0 3px rgba(26,115,232,0.2)}
+button[type=submit]{background:var(--accent);padding:12px 20px;border-radius:8px;border:none;color:#fff;font-weight:700;cursor:pointer}
+
+/* Footer */
+#footer{margin-left:320px;padding:24px;background:transparent;text-align:center;color:var(--muted);border-top:1px solid #e0e0e0}
+.bouton-retour-haut{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff}
+
+/* Neon styles removed */
+.neon{color:var(--accent);text-shadow:none}
+.neon2{color:var(--accent);text-shadow:none}
+
+/* Blob (profile background) */
+.blob{display:none}
+
+/* Responsive: mobile collapse header */
+@media (max-width:1000px){
+  #header{position:relative;width:100%;left:0;top:0;margin-bottom:20px}
+  main, #hero{margin-left:0;padding:20px}
+  .container{width:calc(100% - 24px)}
+  #footer{margin-left:0}
+}
+
+@media (max-width:600px){
+  #hero h1{font-size:28px}
+  #header .profile img.img-fluid.rounded-circle{width:84px;height:84px}
+  .carte-competence{width:110px}
+}
+
+/* petites animations */
+.fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .7s forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* AOS fallback simple initialization helper */
+[data-aos]{opacity:0;transform:translateY(8px);transition:all .6s ease}
+[data-aos].aos-anim{opacity:1;transform:none}
+
+/* Utility classes */
+.text-center{text-align:center}
+.mt-3{margin-top:12px}
+
+/* fin */

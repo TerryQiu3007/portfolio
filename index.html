@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio BTS SIO | Jing Hui Terry QIU</title>
+  
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* --- CSS CRITIQUE POUR LE DESIGN --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Bouton Mobile */
+    .mobile-nav-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+      background: #333; /* A ajuster selon votre thème */
+      color: #fff;
+      border: 0;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none; /* Caché sur PC */
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav-toggle { display: block; }
+      
+      /* Menu Mobile caché par défaut */
+      header {
+        left: -300px;
+        transition: 0.5s;
+        position: fixed;
+        width: 300px;
+        height: 100vh;
+        z-index: 999;
+        background: #040b14; /* Fond sombre par défaut */
+      }
+      
+      header.mobile-nav-active {
+        left: 0;
+      }
+
+      body.mobile-nav-active {
+        overflow: hidden; /* Empêche le scroll quand menu ouvert */
+      }
+    }
+
+    /* Animation d'apparition au scroll (Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Highlight du menu actif */
+    .nav-menu ul li.active a {
+      color: #149ddd; /* Bleu standard, à adapter à votre néon */
+      font-weight: bold;
+    }
+
+    /* Curseur machine à écrire */
+    .typed-cursor {
+      opacity: 1;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button type="button" class="mobile-nav-toggle d-xl-none">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div id="preloader">
+    <div id="status"></div>
+  </div>
+
+  <header id="header">
+    <div class="profile">
+      <div class="blob"></div>
+      <img src="img/anonyme.png" alt="Ma photo" class="img-fluid rounded-circle">
+      <h1 class="neon">Jing Hui Terry QIU</h1>
+      <div class="social-links mt-3">
+        <a href="https://github.com/TerryQiu3007" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jing-hui-terry-qiu-37238132b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <ul>
+        <li class="active"><a href="#hero"><i class="fas fa-house"></i> <span>Accueil</span></a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> <span>A propos</span></a></li>
+        <li><a href="#section-competences"><i class="fas fa-code"></i> <span>Compétences</span></a></li>
+        <li><a href="#section-parcours"><i class="fas fa-file-alt"></i> <span>Parcours</span></a></li>
+        <li><a href="#section-projet"><i class="fa-solid fa-bars-progress"></i> <span>Projets</span></a></li>
+        <li><a href="#section-epreuves"><i class="fa-solid fa-eye"></i> <span>Veilles</span></a></li>
+        <li><a href="#section-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="conteneur-hero">
+      <h1>Bienvenue sur mon <span class="neon">Portfolio</span></h1>
+      <h3>Je suis <span class="typed-text"></span><span class="typed-cursor">|</span></h3>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <section id="about" class="section-presentation reveal">
+      <div class="titre-section">
+        <h2>A propos</h2>
+        <br><h3>Présentation</h3>
+    
+            <p class="texte-italique">
+             Salut, moi c'est <b><strong class="neon2">Jing Hui Terry QIU</strong></b>👋<br>
+			 Je suis actuellement étudiant au <b class="neon2">lycée le Rebours</b> de Paris 🗺️ en première année de <b class="neon2">BTS SIO</b> (Services Informatiques aux Organisations) dans <b class="neon2">l'option SLAM</b> (Solutions Logicielles et Application Métier) qui en gros est une option spécialisée pour le développement 💻 
+            </p>
+			<br>
+            <p>
+             Actuellement toujours en cours d'étude 🎓, je vous propose sur ce section-portfolio de retrouver ci-dessous les différentes études, et projet professionnel que j'ai pu entreprendre au sein de ma carrière.
+            </p>
+			
+			<p>
+           Vous retrouverez ci-dessous mon CV ainsi que mes différents projets  👩‍💻
+            </p>
+			<br>
+			<div class="bouton-cv"><a href="pj/CV.pdf" target="_blank">
+				<div style="text-align: center;"><p><span class="bg"></span><span class="base"></span><span class="text">CV</span></p></div></a>
+			</div>
+        </div>
+    </section>
+
+   <section id="bts-sio" class="section-bts reveal">
+  <div class="titre-section">
+    <h2>Qu'est-ce que le <b>BTS SIO 🎓</b> ?</h2>
+    <p>Avant de commencer à parler de moi, je vous propose de présenter ma filière.</p>
+    <br>
+    <p>
+      Le Brevet de Technicien Supérieur aux Services Informatiques aux Organisations (<b class="neon2">BTS SIO</b>), s'adresse à ceux qui souhaitent se former en deux ans aux métiers d'administrateur réseau ou de développeur.
+    </p>
+    <p>
+      Il permet soit d’intégrer directement le marché du travail, soit de poursuivre des études dans le domaine informatique.
+    </p>
+    <br>
+    <h4>Le BTS SIO propose deux spécialités :</h4>
+  </div>
+
+  <div class="conteneur-projets">
+    <div class="carte-projet bts-option reveal">
+      <h4><i class="fas fa-network-wired neon"></i> Option <b>SISR</b></h4>
+      <p>
+        L’option Solutions d’infrastructure, systèmes et réseaux forme des professionnels des réseaux et équipements informatiques (installation, maintenance, sécurité).
+      </p>
+      <p>Débouchés :</p>
+      <ul>
+        <li>Administrateur systèmes et réseaux</li>
+        <li>Informaticien support et déploiement</li>
+        <li>Pilote d’exploitation</li>
+        <li>Technicien d’infrastructure / production</li>
+        <li>Technicien micro et réseaux</li>
+      </ul>
+    </div>
+    <br>
+    <div class="carte-projet bts-option reveal">
+      <h4><i class="fa-solid fa-desktop neon2"></i> Option <b>SLAM</b> <span class="note-filiere">👈 <i>(ma filière)</i></span></h4>
+      <p>
+        L’option Solutions logicielles et applications métiers forme des spécialistes des logiciels (cahier des charges, développement, intégration).
+      </p>
+      <p>Débouchés :</p>
+      <ul>
+        <li>Développeur d’applications informatiques</li>
+        <li>Analyste programmeur / d’applications</li>
+        <li>Programmeur analyste</li>
+        <li>Responsable des section-services applicatifs</li>
+        <li>Technicien d’études informatiques</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<br>
+    <section id="section-competences" class="section-competences reveal">
+      <div class="titre-section">
+        <h2>Compétences</h2>
+        <p>Voici quelques technologies que j’utilise régulièrement.</p>
+      </div>
+      <div class="skills-part">
+        <div class="skills-parent">
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/html.png" alt="HTML"></div>
+            <div class="skills-name"><p>HTML</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/css.png" alt="CSS"></div>
+            <div class="skills-name"><p>CSS</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/javascript.png" alt="JS"></div>
+            <div class="skills-name"><p>JavaScript</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/php.png" alt="PHP"></div>
+            <div class="skills-name"><p>PHP</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/java.png" alt="JAVA"></div>
+            <div class="skills-name"><p>Java</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/python.png" alt="PY"></div>
+            <div class="skills-name"><p>Python</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/sql.png" alt="SQL"></div>
+            <div class="skills-name"><p>SQL</p></div>
+          </div>
+          <div class="carte-competence reveal">
+            <div class="icone-competence"><img src="img/cpp.png" alt="CPP"></div>
+            <div class="skills-name"><p>C++</p></div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="titre-section">
+      <h2>Mes outils / logiciel</h2>
+      </div>
+      <div class="skills-part">
+        <div class="skills-parent">
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/vscode.png" alt="vscode"></div><div class="skills-name"><p>Visual Studio Code</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/vs.png" alt="vs"></div><div class="skills-name"><p>Visual Studio</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/IJ.png" alt="IJU"></div><div class="skills-name"><p>IntelliJ IDEA Ultimate</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/wordpress.png" alt="wordpress"></div><div class="skills-name"><p>Wordpress</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/docker.png" alt="Docker"></div><div class="skills-name"><p>Docker</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/symfony.png" alt="symfony"></div><div class="skills-name"><p>Symfony</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/warp.png" alt="warp"></div><div class="skills-name"><p>Warp</p></div></div>
+          <div class="carte-competence reveal"><div class="icone-competence"><img src="img/github.png" alt="github"></div><div class="skills-name"><p>Github</p></div></div>
+        </div>
+      </div>  
+
+    </section>
+    <br>
+    <section id="section-parcours" class="section-parcours reveal">
+      <div class="titre-section">
+        <h2>Mon parcours</h2>
+      </div>
+      <div class="carte-parcours">
+        <div class="icone-parcours"><i class="fas fa-graduation-cap"></i></div>
+        <div class="contenu-parcours">
+          <div class="entete-parcours"><h4>Formation</h4></div>
+          <div class="texte-parcours">
+            <p>
+            Lycée Le Rebours<br>
+            BTS, SIO (Services Informatiques aux Organisations)<br>
+            Option: SLAM (solutions logicielles et applications métiers)<br>
+            sept. 2024 - juin 2026
+            </p>
+            <br>
+            <p>
+            Lycée Le Rebours<br>
+            Baccalauréat : STMG(sciences. et technologies du management. et de la gestion)<br>
+            Option: sig (système d'information et de gestion)<br>
+            sept. 2023 - juin. 2024<br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carte-parcours">
+        <div class="icone-parcours"><i class="fas fa-briefcase"></i></div>
+        <div class="contenu-parcours">
+          <div class="entete-parcours"><h4>Expérience</h4></div>
+          <div class="texte-parcours">
+          <p>
+          Technicien Informatique<br>
+          Next Solutions Cayenne · Stage<br>
+          mai 2025 - juin 2025 · 2 mois<br>
+          Cayenne, Guyane · Sur site<br>
+          - Installation et configuration de postes.<br>
+          - Support utilisateur et maintenance technique.<br>
+          </p>
+          <br>
+          <p>
+          Stage de Seconde<br>
+          La Poste CAYENNE BADUEL · Stage<br>
+          janvier 2021 - février 2021 · 1 semaine<br>
+          Cayenne, Guyane · Sur site<br>
+          - Assistance aux employés dans leurs missions quotidiennes.<br>
+          - Accueil et orientation des clients.<br>
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="carte-parcours">
+        <div class="icone-parcours"><i class="fa-solid fa-heart"></i></div>
+        <div class="contenu-parcours">
+          <div class="entete-parcours"><h4>Bénévolat</h4></div>
+          <div class="texte-parcours">
+            <p>
+            Assistant<br>
+            AEPCR - Association d'éducation populaire Charonne Réunion<br>
+            janv. 2023 - mars 2023 · 3 mois<br>
+            - Encadrement d’enfants <br>
+            -Aide aux devoirs<br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-projet" class="section-projet reveal">
+      <div class="titre-section">
+        <h2>Projet</h2>
+        <p>Quelques projets réalisés.</p>
+      </div>
+      <div class="conteneur-projets">
+
+        <div class="carte-projet">
+          <div class="image-projet">
+            <img src="img/tetris.png" alt="projet1">
+          </div>
+          <a href="https://github.com/TerryQiu3007/Tetris"target="_blank"><i class="fas fa-link"></i></a>
+          <span class="date">2025</span>
+          <h4>Tetris</h4>
+        </div>
+
+        <div class="carte-projet">
+          <div class="image-projet">
+            <img src="img/jeux_plant.png" alt="projet2">
+          </div>
+          <a href="https://github.com/TerryQiu3007/Plant"target="_blank"><i class="fas fa-link"></i></a>
+          <span class="date">2025</span>
+          <h4>Plant</h4>
+        </div>
+
+        <div class="carte-projet">
+          <div class="image-projet">
+            <img src="img/PvZ.png" alt="projet3">
+          </div>
+          <a href="https://github.com/TerryQiu3007/Plant"target="_blank"><i class="fas fa-link"></i></a>
+          <span class="date">2025</span>
+          <h4>Plante vs Zombie</h4>
+        </div>
+
+      </div>
+    </section>
+    <br>
+    <section id="section-epreuves" class="section-epreuves reveal">
+      <div class="titre-section">
+        <h2>Veille Technologies</h2>
+      </div>
+      <div class="carte-service">
+        <h4 class="title">Qu'est-ce que la veille technologique ?</h4>
+        <p>La veille technologique est un processus de surveillance des évolutions et des innovations dans un domaine précis. Elle permet de recueillir,<br>
+        analyser et exploiter des informations sur les nouvelles technologies afin d’anticiper les changements, innover, rester compétitif et saisir des opportunités.</p>
+        <h4 class="title">Le sujet de ma veille technologique</h4>
+        <p>Le thème que j’ai choisi pour ma veille est : « IA embarquée et robotique autonome ».<br>
+        Ce sujet m’intéresse particulièrement car l’IA générative, comme ChatGPT ou d’autres outils similaires,<br>
+        joue un rôle de plus en plus important en informatique. Elle est utilisée pour détecter des menaces, automatiser des défenses, et analyser des comportements suspects afin de renforcer la cybersécurité.<br>
+        À travers cette veille, je souhaite comprendre comment l’intelligence artificielle peut aider à protéger les systèmes informatiques, quels sont ses bénéfices, mais aussi les risques liés à son utilisation dans ce domaine.<br>
+        </p>
+      </div>
+      <section class="section-projet">
+      <div class="conteneur-projets">
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/400/300" alt="Article1"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/401/300" alt="Article2"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/402/300" alt="Article3"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/403/300" alt="Article4"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/404/300" alt="Article5"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/405/300" alt="Article6"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/406/300" alt="Article7"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+        <div class="carte-projet">
+          <div class="image-projet"><img src="https://picsum.photos/407/300" alt="Article8"></div>
+          <a href="#"target="_blank"><i class="fas fa-link"></i></a><span class="date">2023</span><h4>Projet 2</h4>
+        </div>
+      </div>
+      </section>
+    </section>
+
+    <section id="section-contact" class="section-contact reveal">
+      <div class="titre-section">
+        <h2>Contact</h2>
+      </div>
+      <div class="infos-contact">
+        <form action="#" method="post" role="form" class="php-email-form">
+          <input type="text" name="name" class="champ-formulaire" placeholder="Votre nom" required><br><br>
+          <input type="email" name="email" class="champ-formulaire" placeholder="Votre email" required><br><br>
+          <textarea name="message" class="champ-formulaire" rows="5" placeholder="Message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer">
+    <p>&copy; 2025 Mon Portfolio. Tous droits réservés.</p>
+  </footer>
+
+  <a href="#hero" class="bouton-retour-haut"><i class="fas fa-arrow-up"></i></a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Suppression du Preloader
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      setTimeout(() => {
+        preloader.style.opacity = "0";
+        setTimeout(() => { preloader.style.display = "none"; }, 500);
+      }, 500);
+    }
+
+    // 2. Gestion du Menu Mobile
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const header = document.getElementById('header');
+    const body = document.body;
+
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', function() {
+        header.classList.toggle('mobile-nav-active');
+        body.classList.toggle('mobile-nav-active');
+        this.querySelector('i').classList.toggle('fa-bars');
+        this.querySelector('i').classList.toggle('fa-xmark');
+      });
+    }
+
+    // Fermer le menu mobile lors du clic sur un lien
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (header.classList.contains('mobile-nav-active')) {
+          header.classList.remove('mobile-nav-active');
+          body.classList.remove('mobile-nav-active');
+          mobileNavToggle.querySelector('i').classList.add('fa-bars');
+          mobileNavToggle.querySelector('i').classList.remove('fa-xmark');
+        }
+      });
+    });
+
+    // 3. Highlight du menu au scroll (Active Link)
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(a => {
+        a.parentElement.classList.remove('active');
+        if (a.getAttribute('href').includes(current)) {
+          a.parentElement.classList.add('active');
+        }
+      });
+    });
+
+    // 4. Animation d'apparition au scroll (Intersection Observer)
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 5. Effet Machine à écrire (Typing Effect)
+    const typedTextSpan = document.querySelector(".typed-text");
+    const textArray = ["Étudiant BTS SIO", "Développeur SLAM", "Passionné d'Info"];
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+      } else {
+        textArrayIndex++;
+        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+        setTimeout(type, 1000);
+      }
+    }
+    
+    // Lancer l'effet machine à écrire s'il y a l'élément
+    if(typedTextSpan) type();
+
+    // 6. Bouton Retour Haut
+    const backToTop = document.querySelector('.bouton-retour-haut');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+
+  });
+</script>
+
+</body>
+</html>
