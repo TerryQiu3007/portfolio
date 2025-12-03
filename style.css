@@ -11,6 +11,80 @@
   --max-width:1100px;
 }
 
+
+/* --- CSS CRITIQUE POUR LE DESIGN --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Bouton Mobile */
+    .mobile-nav-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+      background: #333; /* A ajuster selon votre thème */
+      color: #fff;
+      border: 0;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none; /* Caché sur PC */
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav-toggle { display: block; }
+      
+      /* Menu Mobile caché par défaut */
+      header {
+        left: -300px;
+        transition: 0.5s;
+        position: fixed;
+        width: 300px;
+        height: 100vh;
+        z-index: 999;
+        background: #040b14; /* Fond sombre par défaut */
+      }
+      
+      header.mobile-nav-active {
+        left: 0;
+      }
+
+      body.mobile-nav-active {
+        overflow: hidden; /* Empêche le scroll quand menu ouvert */
+      }
+    }
+
+    /* Animation d'apparition au scroll (Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Highlight du menu actif */
+    .nav-menu ul li.active a {
+      color: #149ddd; /* Bleu standard, à adapter à votre néon */
+      font-weight: bold;
+    }
+
+    /* Curseur machine à écrire */
+    .typed-cursor {
+      opacity: 1;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    
 /* Reset basique */
 *{box-sizing:border-box}
 html,body{height:100%}
