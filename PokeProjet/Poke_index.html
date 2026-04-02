@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Explorer</title>
+    <link href="poke.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1>Pokémon Explorer</h1>
+    <div class="search">
+        <input type="text" id="pokemonName" placeholder="Recherche">
+        <button onclick="getPokemon()">Recherche</button>
+    </div>
+    <div id="pokemonInfo" class="pokemon" style="display: none;">
+        <h2 id="name"></h2>
+        <img id="image" src="" alt="Pokémon image">
+        <p><strong>Type:</strong> <span id="type"></span></p>
+        <p><strong>Taille:</strong> <span id="height"></span></p>
+        <p><strong>Poids:</strong> <span id="weight"></span></p>
+    </div>
+
+    <div id="pokemonList" class="pokemon-list"></div>
+
+   
+
+    <script>
+        let offset = 0; // Offset pour la pagination
+        const limit = 14; // Nombre de Pokémon à afficher par page
+        let totalPokemons = 0; // Nombre total de Pokémon
+        let totalPages = 1; // Nombre total de pages
+
+        // Fonction pour récupérer et afficher la liste des Pokémon
+        async function fetchPokemons() {
+    const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+    const pokemonList = document.getElementById('pokemonList');
+    pokemonList.innerHTML = ''; // Vider la liste actuelle
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Récupérer les détails en parallèle
+        const detailsPromises = data.results.map(pokemon => fetch(pokemon.url).then(res => res.json()));
+        const detailsArray = await Promise.all(detailsPromises);
+
+        detailsArray.forEach(details => {
+            const card = `
+                <div class="pokemon-card">
+                    <h2>${details.name.toUpperCase()}</h2>
+                    <img src="${details.sprites.front_default}" alt="${details.name}" />
+                    <p><strong>Type:</strong> ${details.types.map(t => t.type.name).join(', ')}</p>
+                    <p><strong>Taille:</strong> ${details.height}</p>
+                </div>
+            `;
+            pokemonList.innerHTML += card;
+        });
+    } catch (error) {
+        console.error('Erreur lors du chargement des Pokémon :', error);
+        pokemonList.innerHTML = `<p style="color: red;">Impossible de charger les Pokémon. Veuillez réessayer plus tard.</p>`;
+    }
+
+}
+function updatePageNumber() {
+    document.getElementById('currentPage').innerText = offset / limit + 1;
+    document.getElementById('pageInput').value = offset / limit + 1;
+}
+
+// Met à jour l'affichage du numéro de page
+function updatePageNumber() {
+    document.getElementById('currentPage').innerText = offset / limit + 1;
+    document.getElementById('pageInput').value = offset / limit + 1;
+}
+
+// Modifier les fonctions de navigation :
+function nextPage() {
+    if (offset + limit < totalPokemons) {  // Empêche d'aller au-delà du dernier Pokémon
+        offset += limit;
+        fetchPokemons();
+        updatePageNumber();
+    }
+}
+
+function previousPage() {
+    if (offset >= limit) {
+        offset -= limit;
+        fetchPokemons();
+        updatePageNumber();
+    }
+}
+
+function goToPage() {
+    const pageNumber = parseInt(document.getElementById('pageInput').value);
+    if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
+        offset = (pageNumber - 1) * limit;
+        fetchPokemons();
+        updatePageNumber();
+    }
+}
+
+// Initialisation au chargement de la page
+getTotalPokemons();
+fetchPokemons();
+updatePageNumber();
+
+        // Charger les Pokémon au démarrage
+        fetchPokemons();
+
+        async function getPokemon() {
+            const name = document.getElementById('pokemonName').value.toLowerCase();
+            const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+            const pokemonInfo = document.getElementById('pokemonInfo');
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Pokémon no found');
+                }
+
+                const data = await response.json();
+
+                // Update Pokémon details
+                document.getElementById('name').innerText = data.name;
+                document.getElementById('image').src = data.sprites.front_default;
+                document.getElementById('type').innerText = data.types.map(t => t.type.name).join(', ');
+                document.getElementById('height').innerText = data.height;
+                document.getElementById('weight').innerText = data.weight;
+
+                // Show the Pokémon info card
+                pokemonInfo.style.display = 'block';
+            } catch (error) {
+                pokemonInfo.style.display = 'none';
+                alert(error.message);
+            }
+        }
+
+        async function getTotalPokemons() {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1');
+        const data = await response.json();
+        totalPokemons = data.count;
+        totalPages = Math.ceil(totalPokemons / limit); // Calcul du total de pages
+        document.getElementById('totalPages').innerText = totalPages;
+    } catch (error) {
+        console.error("Erreur lors de la récupération du nombre total de Pokémon :", error);
+    }
+}
+    </script>
+        <div class="navigation-buttons">
+            <button onclick="previousPage()">Précédent</button>
+            <input type="number" id="pageInput" min="1" style="width: 50px;" onchange="goToPage()">
+            <span>Page <span id="currentPage">1</span></span>
+            <span>/ <span id="totalPages">?</span></span>
+            <button onclick="nextPage()">Suivant</button>
+        </div>
+        
+</body>
+</html>
